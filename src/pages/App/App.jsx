@@ -1,4 +1,5 @@
 import {useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import NewOrderPage from '../NewOrderPage/NewOrderPage';
@@ -9,7 +10,10 @@ export default function App() {
   return (
     <main className="App">
       { user ?
-        <NewOrderPage/>
+        <Routes>
+          <Route path="/orders/new" element={<NewOrderPage />}/>
+          <Route path="/orders" element={<OrderHistoryPage />}/>
+        </Routes>
         :
         <AuthPage />
       }
